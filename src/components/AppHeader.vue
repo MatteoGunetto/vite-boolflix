@@ -13,8 +13,13 @@
             }
         },
         methods:{
-            titleSearch(){
-                axios.get('https://api.themoviedb.org/3/search/movie',{
+            officialResearch(){
+                this.titleSearch('movie'),
+                this.titleSearch('tv')
+            },
+            titleSearch(type){
+                const mainUrl = 'https://api.themoviedb.org/3/search/'
+                axios.get(mainUrl + type,{
                     params:{
                         api_key: '1725aa60ed5d2ef0f1559236ce1f53b3',
                         query: this.store.searchText,
@@ -23,7 +28,12 @@
                 )
                 .then((response) => {
                     console.log('ricerca: ', this.store.searchText, response.data.results)
-                    this.store.movies = response.data.results
+                    if (type == 'movie') {
+                        this.store.movies = response.data.results
+                    }
+                    else{
+                        this.store.series = response.data.results
+                    }
                 })
             }
         }
@@ -32,7 +42,7 @@
 
 <template>
     <h1>BoolFlix</h1>
-    <AppSearch @search="titleSearch"/>
+    <AppSearch @search="officialResearch"/>
 </template>
 
 <style lang="scss">
