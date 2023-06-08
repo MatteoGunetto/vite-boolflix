@@ -38,7 +38,14 @@ import { store } from '../store';
             return classflag = lang
         },
         cover(posterpath){
-            return `https://image.tmdb.org/t/p/w154${posterpath}`}
+            return `https://image.tmdb.org/t/p/w154${posterpath}`
+        },
+        voteAndStar(OldValue){
+            let NewValue = ((OldValue - 2 ) *0.5) +1
+            if (OldValue == 0) {
+                return NewValue = 0
+            }
+            return NewValue.toFixed(0);}
     }
     }
 </script>
@@ -54,7 +61,7 @@ import { store } from '../store';
             {{  }}
             <span :class="'fi fi-' + setFlag(element.original_language)"></span>
         </li>
-        <li> <strong>Voto: </strong>{{ element.vote_average }}</li>
+        <li> <strong>Voto: </strong>{{ element.vote_average }} // {{ voteAndStar(element.vote_average) }}</li>
         <!-- hr da togliere -->
         <hr>
     </ul>
@@ -67,7 +74,7 @@ import { store } from '../store';
         <li> <strong>Lingua: </strong>
             <span :class="'fi fi-' + setFlag(elementB.original_language)"></span>
         </li>
-        <li> <strong>Voto: </strong>{{ elementB.vote_average }}</li>
+        <li> <strong>Voto: </strong>{{ elementB.vote_average }} // {{ voteAndStar(elementB.vote_average) }}</li>
         <!-- hr da togliere  -->
         <hr>
     </ul>
