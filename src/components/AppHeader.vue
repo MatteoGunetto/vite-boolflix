@@ -41,9 +41,22 @@
 </script>
 
 <template>
-    <h1>BoolFlix</h1>
-    <AppSearch @search="officialResearch"/>
+    <section>
+        <h1>BoolFlix</h1>
+        <AppSearch @search="officialResearch"/>
+    </section>
 </template>
 
-<style lang="scss">
+<style lang="scss" scoped>
+@use "../styles/general.scss" as *;
+section{
+        @include display-flex-rule;
+        align-items: center;
+        height: 10vh;
+        background-color: rgb(15, 15, 15);
+        padding:  0 20px;
+        h1{
+            color: #EC2724;
+        }
+    }
 </style>

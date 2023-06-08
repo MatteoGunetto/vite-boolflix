@@ -21,5 +21,9 @@ export default {
 </template>
 
 <style lang="scss">
-    @use "../src/styles/general.scss" as *
+@use "./styles/general.scss" as *;
+@import url('https://fonts.googleapis.com/css2?family=Coming+Soon&family=Raleway:wght@400;600&display=swap');
+body{
+    font-family: 'Raleway', sans-serif;
+}
 </style>
