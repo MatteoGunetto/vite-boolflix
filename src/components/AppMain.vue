@@ -6,7 +6,6 @@ import { store } from '../store';
     data() {
         return {
             store,
-            // classFlag: ''
         }
     },
     methods:{
@@ -21,11 +20,25 @@ import { store } from '../store';
             else if (lang == 'ko') {
                 return classflag = 'kn'
             }
-            // else if (lang == 'lang') {
-            //     return classflag = 'lang'
-            // }
+            else if (lang == 'hi') {
+                return classflag = 'in'
+            }
+            else if (lang == 'zh') {
+                return classflag = 'cn'
+            }
+            else if (lang == 'da') {
+                return classflag = 'dk'
+            }
+            else if (lang == 'cs') {
+                return classflag = 'cz'
+            }
+            else if (lang == 'ka') {
+                return classflag = 'ge'
+            }
             return classflag = lang
-        }
+        },
+        cover(posterpath){
+            return `https://image.tmdb.org/t/p/w154${posterpath}`}
     }
     }
 </script>
@@ -36,21 +49,27 @@ import { store } from '../store';
     <ul v-for="element in store.movies">
         <li> <strong>Titolo: </strong>{{ element.title }}</li>
         <li> <strong>Titolo originale: </strong>{{ element.original_title }}</li>
+        <img :src="cover(element.poster_path)" :alt="element.original_title">
         <li> <strong>Lingua: </strong>
             {{  }}
             <span :class="'fi fi-' + setFlag(element.original_language)"></span>
         </li>
         <li> <strong>Voto: </strong>{{ element.vote_average }}</li>
+        <!-- hr da togliere -->
+        <hr>
     </ul>
     <hr>
     <h4>SERIE TV</h4>
     <ul v-for="elementB in store.series">
         <li> <strong>Titolo: </strong>{{ elementB.name }}</li>
         <li> <strong>Titolo originale: </strong>{{ elementB.original_name }} </li>
+        <img :src="cover(elementB.poster_path)" :alt="elementB.original_title">
         <li> <strong>Lingua: </strong>
             <span :class="'fi fi-' + setFlag(elementB.original_language)"></span>
         </li>
         <li> <strong>Voto: </strong>{{ elementB.vote_average }}</li>
+        <!-- hr da togliere  -->
+        <hr>
     </ul>
 </template>
 
