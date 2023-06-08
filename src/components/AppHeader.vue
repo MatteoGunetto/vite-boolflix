@@ -57,6 +57,7 @@ section{
         padding:  0 20px;
         h1{
             color: #EC2724;
+            font-size: 50px;
         }
     }
 </style>

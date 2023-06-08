@@ -22,8 +22,8 @@ export default {
 
 <style lang="scss">
 @use "./styles/general.scss" as *;
-@import url('https://fonts.googleapis.com/css2?family=Coming+Soon&family=Raleway:wght@400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
 body{
-    font-family: 'Raleway', sans-serif;
+    font-family: "Bebas Neue";
 }
 </style>
