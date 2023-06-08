@@ -38,9 +38,9 @@ import { store } from '../store';
             return classflag = lang
         },
         cover(posterpath){
-            return `https://image.tmdb.org/t/p/w342${posterpath}`
+            return `https://image.tmdb.org/t/p/w342/${posterpath}`
         },
-        voteAndStar(OldValue){
+        voteAndStars(OldValue){
             let NewValue = ((OldValue - 2 ) *0.5) +1
             if (OldValue == 0) {
                 console.log(typeof this.stars, this.stars)
@@ -65,12 +65,12 @@ import { store } from '../store';
             <span :class="'fi fi-' + setFlag(element.original_language)"></span>
         </li>
         <li> 
-            <!-- <strong>Voto: </strong>{{ element.vote_average }} // {{ voteAndStar(element.vote_average) }} -->
-            <span v-for="index in voteAndStar(element.vote_average)">
-                &#11088;
+            <!-- <strong>Voto: </strong>{{ element.vote_average }} // {{ voteAndStars(element.vote_average) }} -->
+            <span v-for="index in voteAndStars(element.vote_average)">
+                <font-awesome-icon icon="fa-solid fa-star" style="color: #ffd500;" />
             </span>
-            <span v-for="index in (5 - voteAndStar(element.vote_average))">
-                &#9734;
+            <span v-for="index in (5 - voteAndStars(element.vote_average))">
+                <font-awesome-icon icon="fa-regular fa-star" />
             </span>
         
         
@@ -89,12 +89,12 @@ import { store } from '../store';
             <span :class="'fi fi-' + setFlag(elementB.original_language)"></span>
         </li>
         <li> 
-            <!-- <strong>Voto: </strong>{{ elementB.vote_average }} // {{ voteAndStar(elementB.vote_average) }} -->
-            <span v-for="index in voteAndStar(elementB.vote_average)">
-                &#11088;
+            <!-- <strong>Voto: </strong>{{ elementB.vote_average }} // {{ voteAndStars(elementB.vote_average) }} -->
+            <span v-for="index in voteAndStars(elementB.vote_average)">
+                <font-awesome-icon icon="fa-solid fa-star" style="color: #ffd500;" />
             </span>
-            <span v-for="index in (5 - voteAndStar(elementB.vote_average))">
-                &#9734;
+            <span v-for="index in (5 - voteAndStars(elementB.vote_average))">
+                <font-awesome-icon icon="fa-regular fa-star" />
             </span>
         </li>
         <!-- hr da togliere  -->
