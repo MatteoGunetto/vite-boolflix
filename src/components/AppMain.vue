@@ -42,14 +42,13 @@ import { store } from '../store';
         },
         cover(posterpath){
             return `https://image.tmdb.org/t/p/w342/${posterpath}`
+            
         },
         voteAndStars(OldValue){
             let NewValue = ((OldValue - 2 ) *0.5) +1
             if (OldValue == 0) {
-                console.log(typeof this.stars, this.stars)
                 return this.stars = 0
             }
-            console.log(this.stars)
             return this.stars = parseInt(NewValue.toFixed(0));
         }
     }
@@ -96,7 +95,7 @@ import { store } from '../store';
                             </div>
                             <div>
                                 <p>
-                                    <strong>Trama</strong>
+                                    <strong>Trama: </strong>
                                     <span> 
                                         {{ element.overview}}
                                     </span>
@@ -125,12 +124,13 @@ import { store } from '../store';
                     </div>
                 </div>
                 <!-- serie tv card -->
-                <!-- <div class="my-container">
-                    <div v-for="elementB in store.series" class="my-card">
-                        <div>
+                <div class="my-container">
+                <div v-for="elementB in store.series" class="flip-card">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
                             <img :src="cover(elementB.poster_path)" :alt="elementB.original_title">
                         </div>
-                        <div class="description">
+                        <div class="description flip-card-back">
                             <div>
                                 <p>
                                     <strong>Titolo: </strong>
@@ -155,6 +155,14 @@ import { store } from '../store';
                             </div>
                             <div>
                                 <p>
+                                    <strong>Trama: </strong>
+                                    <span> 
+                                        {{ elementB.overview}}
+                                    </span>
+                                </p>
+                            </div>
+                            <div>
+                                <p>
                                     <strong>Voto: </strong>
                                     <span v-for="index in voteAndStars(elementB.vote_average)">
                                         <font-awesome-icon icon="fa-solid fa-star" style="color: #ffd500;" />
@@ -166,7 +174,8 @@ import { store } from '../store';
                             </div>
                         </div>
                     </div>
-                </div> -->
+                </div>
+            </div>
             </section>
         </main>
     </template>
@@ -179,7 +188,7 @@ import { store } from '../store';
         height: 90vh;
         overflow-y: auto;
         padding: 20px 0;
-        background-color: lightgray;
+        background-color: rgb(41, 40, 40);
     }
     h4{
         font-size: 30px;
@@ -196,29 +205,27 @@ import { store } from '../store';
     }
     p{
         font-size: 16px;
-        line-height: 18px;
+        line-height: 20px;
         margin-bottom: 10px;
+    }
+    strong{
+        color: red;
     }
     .my-container{
         width: 90vw;
         margin: 0 auto;
-        @include display-flex-rule;
+        display: flex;
         flex-wrap: wrap;
+        gap: 40px;
     }
-    // .my-card{
-    //     width: 20%;
-    //     margin-bottom: 20px;
-    //     position: relative;
-    // }
     div.description{
         position: absolute;
-        top: 0;
-        right: 0;
         max-width: 342px;
-        background: black;
+        background: rgba(0, 0, 0, 0.514);
         color: white;
-        padding: 5px 3px 0 5px;
-        height: 100%;
+        padding: 5px 5px 0 5px;
+        border: 2px white solid;
+        overflow: hidden;
     }
     
 </style>
